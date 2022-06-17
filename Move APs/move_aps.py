@@ -48,7 +48,7 @@ def wait_for_async_response(session, response, sleep_time=2):
 
     # Loop while our request is pending
     while True:
-        r = session.get(f'{DOMAIN}/api/tenant/{tenant_id}/request/{request_id}')
+        r = session.get(f'{DOMAIN}/api/tenant/{tenant_id}/request/{request_id}') // this line may need to include headers x-request-id and x-rks-tenantid
         if r.status_code != 200 or not r.text:
             print(f'Request status undefined [{r.status_code}]: "{r.text}"')
         else:
